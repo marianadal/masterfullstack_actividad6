@@ -1,0 +1,8 @@
+<section>
+    <h2>Listado de usuarios</h2>
+    <div class="row g-3">
+        <article *ngFor = "let user of usersList" class="col-12 col-md-6 col-xl-3">
+            <app-user [userInCard]="user"></app-user>
+        </article>
+    </div>
+</section>
