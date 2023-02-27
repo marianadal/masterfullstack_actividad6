@@ -1,0 +1,19 @@
+<section class="container">
+    <h1>Detalle del usuario</h1>
+    <div class="user__card">
+        <figure class="user__image">
+            <img src="{{user.image}}" alt="{{user.first_name}} {{user.last_name}}">
+        </figure>
+        <div class="user__info">
+            <h3>{{user.first_name}}</h3>
+            <h3>{{user.last_name}}</h3>
+            <h4>Nombre del usuario: {{user.username}}</h4>
+            <h4>Email: {{user.email}}</h4>
+            <div>
+                <button type="button" class="btn btn-secondary">Eliminar</button>
+                <button type="button" class="btn btn-secondary">Actualizar</button>
+                <button type="button" class="btn btn-secondary" [routerLink]="'/home'">Volver al listado</button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -13,9 +13,9 @@ export class UsersListComponent implements OnInit {
   //Inyecto la dependencia para que recoja los datos del servicio (como propiedad privada)
   constructor(private usersService: UsersService) {}
 
-  //Necesito llamar al servicio para traer el listado de usuarios
+  //Cuando el componente esté cargado, necesito llamar al servicio para traer el listado de usuarios
   ngOnInit(): void {
-    this.usersList = this.usersService.getAllUsers();
+    this.usersList = this.usersService.getAll();
     console.log(this.usersList);
   }
 }

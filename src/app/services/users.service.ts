@@ -11,7 +11,10 @@ export class UsersService {
 
   constructor() {}
 
-  getAllUsers(): User[] {
+  getAll(): User[] {
     return this.userPage.results;
+  }
+  getById(id: number): User | any {
+    return this.getAll().find((user) => user.id === id);
   }
 }

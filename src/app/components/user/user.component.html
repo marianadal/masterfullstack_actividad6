@@ -4,8 +4,8 @@
       <h5 class="card-title">{{userInCard.first_name}} {{userInCard.last_name}}</h5>
     </div>
     <div class="card-footer">
-      <a href="#" class="card-link">Ver detalle</a>
-      <a href="#" class="card-link">Actualizar</a>
-      <a href="#" class="card-link">Borrar</a>
+      <a class="card-link" [routerLink]="['/user', userInCard.id]">Ver detalle</a>
+      <a class="card-link">Actualizar</a>
+      <a class="card-link">Borrar</a>
     </div>
 </div>

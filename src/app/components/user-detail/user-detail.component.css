@@ -1,0 +1,7 @@
+.user__card {
+    display: flex;
+}
+.user__image,
+.user__info {
+    flex-basis: 50%;
+}
