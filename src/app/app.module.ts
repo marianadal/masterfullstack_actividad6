@@ -1,6 +1,9 @@
+//Librerías
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
+//Componentes
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
@@ -18,7 +21,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     HeaderComponent,
     UserDetailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

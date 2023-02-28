@@ -1,0 +1,12 @@
+.form__input.ng-invalid.ng-touched {
+    border-bottom: 3px solid crimson;
+}
+
+.form__input.ng-valid.ng-touched {
+    border-bottom: 3px solid lightgreen;
+}
+
+.form__error {
+    color:crimson;
+    font-size: 10px;
+}

@@ -1,1 +1,83 @@
-<p>form works!</p>
+<!-- {{ formModel.valid }} -->
+<section class="container">
+  <form [formGroup]="formModel" (ngSubmit)="getDataForm()">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label class="form-label" for="firstname">Nombre del usuario (*)</label>
+        <input
+          id="firstname"
+          type="text"
+          class="form-control form__input"
+          placeholder="Introduce el nombre del usuario"
+          formControlName="first_name"
+        />
+        <p class="form__error" *ngIf="checkControl('first_name', 'required')">
+          Este campo es requerido
+        </p>
+        <p class="form__error" *ngIf="checkControl('first_name', 'minlength')">
+          El nombre debe tener mínimo 3 letras
+        </p>
+      </div>
+      <div class="col-12 mb-3">
+        <label class="form-label" for="lastname"
+          >Apellido del usuario (*)</label
+        >
+        <input
+          id="lastname"
+          type="text"
+          class="form-control form__input"
+          placeholder="Introduce el apellido del usuario"
+          formControlName="last_name"
+        />
+        <p class="form__error" *ngIf="checkControl('last_name', 'required')">
+          Este campo es requerido
+        </p>
+      </div>
+      <div class="col-12 mb-3">
+        <label class="form-label" for="email">Email del usuario (*)</label>
+        <input
+          id="email"
+          type="mail"
+          class="form-control form__input"
+          placeholder="Introduce el e-mail del usuario"
+          formControlName="email"
+        />
+        <p class="form__error" *ngIf="checkControl('email', 'required')">
+          Este campo es requerido
+        </p>
+        <p class="form__error" *ngIf="checkControl('email', 'pattern')">
+          El formato e-mail debe ser válido
+        </p>
+      </div>
+      <div class="col-12 mb-3">
+        <label class="form-label" for="picture"
+          >URL de la imagen del usuario (*)</label
+        >
+        <input
+          id="picture"
+          type="url"
+          class="form-control form__input"
+          placeholder="https//..."
+          alt="imagen"
+          formControlName="image"
+        />
+        <p class="form__error" *ngIf="checkControl('image', 'required')">
+          Este campo es requerido
+        </p>
+        <p class="form__error" *ngIf="checkControl('image', 'pattern')">
+          La URL de la imagen debe ser válida
+        </p>
+      </div>
+      <div>
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          alt="guardar"
+          [disabled]="!formModel.valid"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</section>
