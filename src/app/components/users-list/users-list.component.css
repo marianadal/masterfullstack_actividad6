@@ -1,5 +1,5 @@
-.page-link[disabled]{
-    background-color: gainsboro;
+.page-link[disabled] {
+    opacity: 30%;
 }
 
 .page-item {

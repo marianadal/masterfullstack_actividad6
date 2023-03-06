@@ -12,6 +12,7 @@ export class UsersListComponent implements OnInit {
   usersList: User[] = [];
   currentPage: number = 1;
   totalPages: number = 1;
+  pageNavigation: boolean = false;
 
   constructor(
     private usersService: UsersService,
@@ -29,6 +30,7 @@ export class UsersListComponent implements OnInit {
       this.currentPage = response.page;
       this.totalPages = response.total_pages;
       this.usersList = response.results;
+      this.pageNavigation = true;
     } catch (error) {
       this.alertsServices.createAlertGetAllError();
     }
