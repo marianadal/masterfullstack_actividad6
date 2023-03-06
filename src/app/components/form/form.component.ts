@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user.interface';
 import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { AlertsService } from 'src/app/services/alerts.service';
 
 @Component({
   selector: 'app-form',
@@ -18,7 +18,8 @@ export class FormComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private alertsService: AlertsService
   ) {
     this.formModel = new FormGroup(
       {
@@ -59,7 +60,7 @@ export class FormComponent implements OnInit {
           });
           this.formModel.markAllAsTouched();
         } catch (error) {
-          console.log(error);
+          this.alertsService.createAlertUpdateError();
         }
       }
     });
@@ -67,54 +68,31 @@ export class FormComponent implements OnInit {
 
   async getDataForm() {
     let user: User = this.formModel.value;
-    console.log(user);
     if (this.userUpdate) {
       //Actualizo el usuario
       user._id = this.userUpdate._id;
       try {
         let response = await this.usersService.update(user);
-        console.log(response);
         if (response._id) {
-          Swal.fire(
-            `Usuario ${response.first_name} con id ${this.userUpdate._id} se ha actualizado correctamente`
-          );
+          this.alertsService.createAlertUpdateOk(response);
         } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: '¡Algo ha ido mal! No se ha podido actualizar el usuario',
-          });
+          this.alertsService.createAlertUpdateError();
         }
       } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: '¡Algo ha ido mal! No se ha podido actualizar el usuario',
-        });
+        this.alertsService.createAlertUpdateError();
       }
     } else {
       //Creo un nuevo usuario
       try {
         let response = await this.usersService.create(user);
-        console.log(response);
         if (response.id) {
-          Swal.fire(
-            `Usuario ${response.first_name} con id ${response.id} se ha creado correctamente`
-          );
+          this.alertsService.createAlertCreateOk(response);
           this.router.navigate(['/home']);
         } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: '¡Algo ha ido mal! No se ha podido crear el usuario',
-          });
+          this.alertsService.createAlertCreateError();
         }
       } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: '¡Algo ha ido mal! No se ha podido crear el usuario',
-        });
+        this.alertsService.createAlertCreateError();
       }
     }
   }
