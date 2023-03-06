@@ -1,0 +1,13 @@
+.page-link[disabled]{
+    background-color: gainsboro;
+}
+
+.page-item {
+    display: flex;
+    align-items: center;
+}
+
+.page-item-current {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

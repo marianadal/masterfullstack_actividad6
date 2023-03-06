@@ -1,8 +1,35 @@
 <section class="container">
-    <h2>Listado de usuarios</h2>
-    <div class="row g-3">
-        <article *ngFor = "let user of usersList" class="col-12 col-md-6 col-xl-3">
-            <app-user [userInCard]="user"></app-user>
-        </article>
-    </div>
+  <h2>Listado de usuarios</h2>
+  <div class="row g-3">
+    <article *ngFor="let user of usersList" class="col-12 col-md-6 col-xl-3">
+      <app-user [userInCard]="user"></app-user>
+    </article>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <button
+            class="page-link"
+            aria-label="Previous"
+            (click)="gotoPage(currentPage - 1)"
+            [disabled]="currentPage === 1"
+          >
+            &laquo;
+          </button>
+        </li>
+        <li class="page-item">
+          <span class="page-item-current">{{ currentPage }}</span>
+        </li>
+        <li class="page-item">
+          <button
+            class="page-link"
+            aria-label="Next"
+            (click)="gotoPage(currentPage + 1)"
+            [disabled]="currentPage === totalPages"
+          >
+            <span aria-hidden="true" class="page-link-button">&raquo;</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </section>

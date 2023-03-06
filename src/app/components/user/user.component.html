@@ -1,11 +1,36 @@
 <div class="card h-100">
-    <img src="{{userInCard.image}}" class="card-img-top" alt="{{userInCard.first_name}} {{userInCard.last_name}}">
-    <div class="card-body">
-      <h5 class="card-title">{{userInCard.first_name}} {{userInCard.last_name}}</h5>
-    </div>
-    <div class="card-footer">
-      <a class="card-link" [routerLink]="['/user', userInCard.id]">Ver detalle</a>
-      <a class="card-link">Actualizar</a>
-      <a class="card-link">Borrar</a>
-    </div>
+  <img
+    [src]="userInCard?.image"
+    class="card-img-top"
+    [alt]="userInCard?.username"
+  />
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ userInCard?.first_name }} {{ userInCard?.last_name }}
+    </h5>
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn" [routerLink]="['/user', userInCard?._id]">
+      <div>
+        <i class="fa-solid fa-magnifying-glass button-icon"></i>
+        <span>Ver detalle</span>
+      </div>
+    </button>
+    <button
+      type="button"
+      class="btn"
+      [routerLink]="['/user', userInCard?._id, 'updateuser']"
+    >
+      <div>
+        <i class="fa-solid fa-pen button-icon"></i>
+        <span>Actualizar</span>
+      </div>
+    </button>
+    <button type="button" class="btn" (click)="deleteUser(userInCard?._id)">
+      <div>
+        <i class="fa-solid fa-trash button-icon"></i>
+        <span>Borrar</span>
+      </div>
+    </button>
+  </div>
 </div>
